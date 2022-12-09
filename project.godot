@@ -9,7 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+<<<<<<< HEAD
 "base": "EditorVCSInterface",
+=======
+"base": "",
+>>>>>>> e4c8c2eb2f6f34980f6e7692b6fdaec481fc4385
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
