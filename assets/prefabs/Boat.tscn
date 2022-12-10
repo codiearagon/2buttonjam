@@ -65,12 +65,7 @@ material = SubResource( 7 )
 position = Vector2( 0, -24 )
 scale = Vector2( 1.75, 1.75 )
 frames = SubResource( 6 )
-frame = 1
+frame = 3
 playing = true
 offset = Vector2( 0, -8 )
 script = ExtResource( 4 )
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-lifetime = 132.12
-speed_scale = 0.15
-randomness = 0.07
