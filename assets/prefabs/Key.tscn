@@ -6,7 +6,7 @@
 radius = 17.0
 height = 34.0
 
-[node name="Area2D" type="Area2D"]
+[node name="Key" type="Area2D"]
 
 [node name="PlaceholderKey" type="Sprite" parent="."]
 position = Vector2( 0, -32 )
