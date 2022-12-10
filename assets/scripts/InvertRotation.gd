@@ -22,7 +22,6 @@ func get_input() -> void:
 func _physics_process(delta: float) -> void:
 	get_input()
 	rotation = lerp_angle(rotation, rotation_dir * rotation_speed, delta)
-	print(rotation)
 	
 	speed = lerp(speed, 0, 0.05)
 	speed = clamp(speed, 0, maxSpeed)
