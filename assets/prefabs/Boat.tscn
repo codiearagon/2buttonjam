@@ -12,7 +12,6 @@ radius = 30.0
 height = 46.0
 
 [sub_resource type="CanvasItemMaterial" id=7]
-blend_mode = 1
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
@@ -71,13 +70,7 @@ playing = true
 offset = Vector2( 0, -8 )
 script = ExtResource( 4 )
 
-[node name="FX" type="AnimatedSprite" parent="Child"]
-modulate = Color( 1, 1, 1, 0.227451 )
-self_modulate = Color( 1, 1, 1, 0 )
-show_behind_parent = true
-material = SubResource( 7 )
-frames = SubResource( 6 )
-frame = 1
-playing = true
-offset = Vector2( 0, -8 )
-script = ExtResource( 4 )
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+lifetime = 132.12
+speed_scale = 0.15
+randomness = 0.07
