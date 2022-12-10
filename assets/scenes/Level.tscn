@@ -8,4 +8,4 @@
 format = 1
 
 [node name="Boat" parent="." instance=ExtResource( 1 )]
-position = Vector2( 209, 296 )
+position = Vector2( 408, 505 )
