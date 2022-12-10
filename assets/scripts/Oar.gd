@@ -10,9 +10,9 @@ var side = 0
 
 func get_input() -> void:
 	if Input.is_action_pressed("row_left"):
-		side = 0
-	if Input.is_action_pressed("row_right"):
 		side = 1
+	if Input.is_action_pressed("row_right"):
+		side = 0
 	if Input.is_action_pressed("row_right")	or Input.is_action_pressed("row_left"):
 		amount_rowed += rowing_strength
 
