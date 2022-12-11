@@ -54,6 +54,7 @@ shape = SubResource( 8 )
 width = 50.0
 gradient = SubResource( 9 )
 script = ExtResource( 6 )
+length = 20
 
 [node name="BoatSprite" type="Sprite" parent="."]
 position = Vector2( 0, -52 )
