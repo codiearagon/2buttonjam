@@ -59,13 +59,13 @@ width = 50.0
 gradient = SubResource( 9 )
 script = ExtResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="BoatSprite" type="Sprite" parent="."]
 position = Vector2( 0, -52 )
 rotation = 1.5708
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 
-[node name="Oar" type="Sprite" parent="."]
+[node name="OarSprite" type="Sprite" parent="."]
 position = Vector2( 0, -23 )
 rotation = 0.00174533
 scale = Vector2( 1.75, 1.75 )
@@ -79,7 +79,7 @@ material = SubResource( 7 )
 position = Vector2( 0, -24 )
 scale = Vector2( 1.75, 1.75 )
 frames = SubResource( 6 )
-frame = 3
+frame = 1
 playing = true
 offset = Vector2( 0, -8 )
 script = ExtResource( 4 )

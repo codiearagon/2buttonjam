@@ -22,6 +22,3 @@ func _process(delta):
 			remove_point(0)
 		
 		framelimiter = 0
-		
-	#print("Parent Pos: ", parent_position.x, ", ", parent_position.y)
-	#print("Child Pos: ", child_position.x, ", ", child_position.y)
