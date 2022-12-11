@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://assets/scripts/Key.gd" type="Script" id=1]
-[ext_resource path="res://assets/scripts/KeyJump.gd" type="Script" id=2]
-[ext_resource path="res://assets/sprites/key-sheet.png" type="Texture" id=3]
+[ext_resource path="res://assets/Key/Key.gd" type="Script" id=1]
+[ext_resource path="res://assets/Key/KeyJump.gd" type="Script" id=2]
+[ext_resource path="res://assets/Key/key-sheet.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 17.0

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gate.png-a0d7fdee8dad2cf4c92779dc2ab32fef.stex"
+path="res://.import/dungeontiles.png-c8d69b858030785104a6485732755d31.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/gate.png"
-dest_files=[ "res://.import/gate.png-a0d7fdee8dad2cf4c92779dc2ab32fef.stex" ]
+source_file="res://assets/Tilemaps/dungeontiles.png"
+dest_files=[ "res://.import/dungeontiles.png-c8d69b858030785104a6485732755d31.stex" ]
 
 [params]
 

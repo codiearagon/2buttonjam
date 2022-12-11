@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boatLighting.png-214311792423eb6aeaf02b984faca1d2.stex"
+path="res://.import/lock-sheet.png-46bd4fa33f0153e23202adcbddcecfe8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/boatLighting.png"
-dest_files=[ "res://.import/boatLighting.png-214311792423eb6aeaf02b984faca1d2.stex" ]
+source_file="res://assets/Gate/lock-sheet.png"
+dest_files=[ "res://.import/lock-sheet.png-46bd4fa33f0153e23202adcbddcecfe8.stex" ]
 
 [params]
 

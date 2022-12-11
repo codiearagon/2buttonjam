@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://assets/sprites/gate.png" type="Texture" id=1]
-[ext_resource path="res://assets/scripts/Gate.gd" type="Script" id=3]
-[ext_resource path="res://assets/sprites/lock-sheet.png" type="Texture" id=4]
-[ext_resource path="res://assets/scripts/LockSprite.gd" type="Script" id=5]
+[ext_resource path="res://assets/Gate/Gate.png" type="Texture" id=1]
+[ext_resource path="res://assets/Gate/Gate.gd" type="Script" id=3]
+[ext_resource path="res://assets/Gate/lock-sheet.png" type="Texture" id=4]
+[ext_resource path="res://assets/Gate/LockSprite.gd" type="Script" id=5]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 4 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boatMC.png-8e392618ee97168e0b340908166df745.stex"
+path="res://.import/key-sheet.png-e9b4bc9cc702bb40b5409d610bcf2da4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/boatMC.png"
-dest_files=[ "res://.import/boatMC.png-8e392618ee97168e0b340908166df745.stex" ]
+source_file="res://assets/Key/key-sheet.png"
+dest_files=[ "res://.import/key-sheet.png-e9b4bc9cc702bb40b5409d610bcf2da4.stex" ]
 
 [params]
 
