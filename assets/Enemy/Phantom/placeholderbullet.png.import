@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Gate.png-ebdcaf6b9e99f8a420b09f0b4e2d62ba.stex"
+path="res://.import/placeholderbullet.png-4a611c6b09c8448a18fa22100a69e897.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Gate/Gate.png"
-dest_files=[ "res://.import/Gate.png-ebdcaf6b9e99f8a420b09f0b4e2d62ba.stex" ]
+source_file="res://assets/Enemy/Phantom/placeholderbullet.png"
+dest_files=[ "res://.import/placeholderbullet.png-4a611c6b09c8448a18fa22100a69e897.stex" ]
 
 [params]
 

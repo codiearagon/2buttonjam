@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Enemy/Phantom/Phantom.gd" type="Script" id=1]
+[ext_resource path="res://assets/Enemy/Phantom/placeholder.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 31.0
+height = 62.0
+
+[node name="Phantom" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 1 )
+health = 10
+movement_speed = 50
+bullet_damage = 5
+bullet_speed = 100.0
+attack_rate = 2.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, -57 )
+scale = Vector2( 4.96154, 4.96154 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, -57 )
+shape = SubResource( 1 )
+
+[node name="Attack_Rate" type="Timer" parent="."]
+autostart = true
+
+[node name="Bullets" type="Node" parent="."]
+
+[connection signal="timeout" from="Attack_Rate" to="." method="_on_Timer_timeout"]
