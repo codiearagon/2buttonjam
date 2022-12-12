@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Oar.png-c74b81e8797bdc25620bee3ec2bd1a0d.stex"
+path="res://.import/tile008.png-a83a7577cfe9becc093474166b1580ee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Boat/Oar.png"
-dest_files=[ "res://.import/Oar.png-c74b81e8797bdc25620bee3ec2bd1a0d.stex" ]
+source_file="res://assets/Boat/Textures/Split_Ripples/tile008.png"
+dest_files=[ "res://.import/tile008.png-a83a7577cfe9becc093474166b1580ee.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

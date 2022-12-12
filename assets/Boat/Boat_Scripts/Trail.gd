@@ -3,6 +3,7 @@ extends Line2D
 export (int, 0, 100) var length = 40
 var child_position = Vector2.ZERO
 var parent_position = Vector2.ZERO
+var temp_position = Vector2.ZERO
 var parent_rotation = 0
 var framelimiter = 0
 
@@ -15,10 +16,10 @@ func _process(delta):
 	
 	framelimiter += delta
 	
-	if framelimiter > 1.0/24:
+	if framelimiter > 1.0/2:
 		child_position = parent_position
 		add_point(parent_position)
 		while get_point_count() > length:
-			remove_point(0)
+			remove_point(1)
 		
 		framelimiter = 0

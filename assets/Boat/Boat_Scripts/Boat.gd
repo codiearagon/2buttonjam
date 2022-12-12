@@ -6,16 +6,17 @@ var obtained_key: bool = false
 # Movement Variables
 export (int) var maxSpeed = 50
 export (float) var rotation_speed = 0.03
+export (float, 1, 2) var boost_strength = 1.5
 var velocity = Vector2.ZERO
 var rotation_dir = 0
 var speed = 0
 
 # Movement
 func get_input() -> void:
-	if Input.is_action_pressed("row_left"):
+	if Input.is_action_pressed("row_left") and !Input.is_action_pressed("row_right"):
 		rotation_dir += 1
 		speed = maxSpeed
-	if Input.is_action_pressed("row_right"):
+	if Input.is_action_pressed("row_right") and !Input.is_action_pressed("row_left"):
 		rotation_dir -= 1
 		speed = maxSpeed
 		

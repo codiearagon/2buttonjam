@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BoatMC.png-deb26abae2d7cb34817ecfe35f77cfd1.stex"
+path="res://.import/Oar.png-a571fac59cee7b1dd0442966be74a57a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Boat/BoatMC.png"
-dest_files=[ "res://.import/BoatMC.png-deb26abae2d7cb34817ecfe35f77cfd1.stex" ]
+source_file="res://assets/Boat/Textures/Oar.png"
+dest_files=[ "res://.import/Oar.png-a571fac59cee7b1dd0442966be74a57a.stex" ]
 
 [params]
 
