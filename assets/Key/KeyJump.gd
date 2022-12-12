@@ -11,7 +11,7 @@ func _process(delta):
 	
 	if framelimiter > 1.0/1:
 		isUp *= -1
-		sprite_position.y = -1.5 * isUp
+		sprite_position.y = 1.5 * isUp
 		sprite_position.x = 1.5 * isUp
 		set_offset(sprite_position)
 		framelimiter = 0
