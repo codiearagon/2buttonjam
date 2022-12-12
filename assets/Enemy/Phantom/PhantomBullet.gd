@@ -6,7 +6,7 @@ var boat_position = Vector2.ZERO
 var direction = Vector2.ZERO
 
 func _ready():
-	boat_position = get_node("../Boat/HitPoint").global_position
+	boat_position = get_node("../Boat/Center").global_position
 	direction = position.direction_to(boat_position)
 	pass
 

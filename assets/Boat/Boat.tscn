@@ -57,6 +57,9 @@ radius = 32.0624
 collision_layer = 2
 script = ExtResource( 5 )
 
+[node name="Center" type="Node2D" parent="."]
+position = Vector2( 0, -51 )
+
 [node name="BoatSprite" type="Sprite" parent="."]
 position = Vector2( 0, -52 )
 rotation = 1.5708
@@ -91,9 +94,6 @@ range_height = -0.1
 [node name="BoatCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -53 )
 shape = SubResource( 8 )
-
-[node name="HitPoint" type="Node2D" parent="."]
-position = Vector2( 0, -51 )
 
 [node name="Deflector" type="KinematicBody2D" parent="."]
 collision_layer = 32
