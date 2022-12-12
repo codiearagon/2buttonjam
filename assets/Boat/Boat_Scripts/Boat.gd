@@ -1,22 +1,24 @@
 extends KinematicBody2D
 
+# Health
+export var health: int = 100
+
 # Key
 var obtained_key: bool = false
 
 # Movement Variables
-export (int) var maxSpeed = 50
-export (float) var rotation_speed = 0.03
-export (float, 1, 2) var boost_strength = 1.5
+export var maxSpeed: int = 50
+export var rotation_speed: float = 0.03
 var velocity = Vector2.ZERO
 var rotation_dir = 0
 var speed = 0
 
 # Movement
 func get_input() -> void:
-	if Input.is_action_pressed("row_left") and !Input.is_action_pressed("row_right"):
+	if Input.is_action_pressed("row_left"):
 		rotation_dir += 1
 		speed = maxSpeed
-	if Input.is_action_pressed("row_right") and !Input.is_action_pressed("row_left"):
+	if Input.is_action_pressed("row_right"):
 		rotation_dir -= 1
 		speed = maxSpeed
 		
@@ -41,3 +43,9 @@ func check_gate_collision():
 				collision.collider.set_unlocked(true)
 			else:
 				print("No key")
+
+
+func take_damage(amount: int):
+	health -= amount
+	health = clamp(health, 0, 100)
+	print(health)

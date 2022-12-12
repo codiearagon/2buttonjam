@@ -1,14 +1,16 @@
 extends KinematicBody2D
 
 var bullet_speed = 0
-var boat_position
+var bullet_damage = 0
+var boat_position = Vector2.ZERO
+var direction = Vector2.ZERO
 
 func _ready():
+	boat_position = get_node("../Boat").position
+	direction = position.direction_to(boat_position)
 	pass
 
-func _physics_process(delta: float) -> void:
-	boat_position = get_node("../Boat").position
-	var direction = position.direction_to(boat_position)
+func _physics_process(delta: float) -> void:	
 	move_and_slide(direction * bullet_speed)
 	
 	# Delete on hit
@@ -19,4 +21,6 @@ func check_boat_collision():
 	var collision: KinematicCollision2D = get_last_slide_collision()
 	if collision !=  null:
 		if collision.collider.name == "Boat":
+			var boat = collision.collider
+			boat.take_damage(bullet_damage)
 			queue_free()

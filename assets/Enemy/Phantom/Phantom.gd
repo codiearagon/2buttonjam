@@ -20,10 +20,11 @@ func flip_sprite(direction):
 	else:
 		get_node("Sprite").set_flip_h(false)
 
-func _on_Timer_timeout() -> void:
+
+func _on_Attack_Rate_timeout() -> void:
 	var new_bullet = bullet.instance()
 	new_bullet.position = position
 	new_bullet.position.y -= 50
 	new_bullet.bullet_speed = bullet_speed
+	new_bullet.bullet_damage = bullet_damage
 	get_parent().add_child(new_bullet)
-	
