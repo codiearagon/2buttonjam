@@ -3,8 +3,10 @@ extends "../EnemyBase.gd"
 var bullet = preload("./PhantomBullet.tscn")
 
 func _ready():
+	health = max_health
+	
 	get_node("Attack_Rate").wait_time = attack_rate
-	emit_signal("health_changed", health)
+	emit_signal("health_changed", health, max_health)
 
 func _physics_process(delta: float) -> void:
 	var boat_position = get_node("../Boat").global_position
@@ -12,7 +14,7 @@ func _physics_process(delta: float) -> void:
 	
 	#print(boat_position.normalized().dot(global_position.normalized()))
 	
-	if position.distance_to(boat_position) >= 250:
+	if position.distance_to(boat_position) >= 350:
 		move_and_slide(direction * movement_speed)
 		
 	flip_sprite(direction)
@@ -35,6 +37,6 @@ func receive_damage(amount: float):
 	health -= amount
 	health = clamp(health, 0, 10)
 	
-	emit_signal("health_changed", health)
+	emit_signal("health_changed", health, max_health)
 	if health <= 0:
 		queue_free()

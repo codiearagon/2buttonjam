@@ -19,8 +19,8 @@ func _physics_process(delta: float) -> void:
 func check_enemy_collision():
 	var collision: KinematicCollision2D = get_last_slide_collision()
 	if collision !=  null:
-		#print(collision.collider.name)
-		if collision.collider.name == "Phantom":
+		#print(collision.collider.get_collision_layer())
+		if collision.collider.get_collision_layer() == 4:
 			var phantom = collision.collider
 			phantom.receive_damage(bullet_damage)
 			queue_free()

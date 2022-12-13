@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal health_changed(value)
 
+export var max_health: int = 0
 export var health: int = 0
 export var movement_speed: int = 0
 export var bullet_damage: int = 0

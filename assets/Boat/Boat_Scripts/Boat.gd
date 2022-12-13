@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # Health
-signal health_changed(value)
+signal health_changed(value, max_value)
 
 export var max_health: int = 100
 var health: int = 0
@@ -29,7 +29,7 @@ func _ready():
 	health = max_health
 	
 	get_node("Attack_Rate").wait_time = attack_rate
-	emit_signal("health_changed", health)
+	emit_signal("health_changed", health, max_health)
 	emit_signal("obtained_key", have_key)
 
 func _physics_process(delta: float) -> void:
@@ -69,7 +69,7 @@ func obtained_key():
 func take_damage(amount: int):
 	health -= amount
 	health = clamp(health, 0, 100)
-	emit_signal("health_changed", health)
+	emit_signal("health_changed", health, max_health)
 
 func _on_Attack_Rate_timeout() -> void:
 	var new_bullet = bullet.instance()

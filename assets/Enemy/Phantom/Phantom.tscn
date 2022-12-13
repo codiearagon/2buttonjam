@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Enemy/Phantom/Phantom.gd" type="Script" id=1]
 [ext_resource path="res://assets/Enemy/Phantom/placeholder.png" type="Texture" id=2]
 [ext_resource path="res://assets/Enemy/Phantom/UI.gd" type="Script" id=3]
 [ext_resource path="res://default_theme.tres" type="Theme" id=4]
+[ext_resource path="res://assets/Styles/HealthBG.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/Styles/HealthFG.tres" type="StyleBox" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 31.0
@@ -14,10 +16,11 @@ position = Vector2( 114, 198 )
 collision_layer = 4
 collision_mask = 32
 script = ExtResource( 1 )
+max_health = 10
 health = 10
 movement_speed = 50
 bullet_damage = 5
-bullet_speed = 200.0
+bullet_speed = 100.0
 attack_rate = 2.0
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -39,18 +42,27 @@ margin_right = 75.0
 margin_bottom = -130.0
 script = ExtResource( 3 )
 
-[node name="Health" type="PanelContainer" parent="UI"]
+[node name="Health" type="ProgressBar" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 4 )
+custom_styles/fg = ExtResource( 6 )
+custom_styles/bg = ExtResource( 5 )
+max_value = 10.0
+step = 1.0
+value = 10.0
+percent_visible = false
 
 [node name="Label" type="Label" parent="UI/Health"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 143.0
-margin_bottom = 25.0
+margin_bottom = 26.0
 theme = ExtResource( 4 )
 text = "HP: 10"
 align = 1
+
+[node name="OnHitTween" type="Tween" parent="UI/Health"]
 
 [connection signal="health_changed" from="." to="UI" method="_on_Phantom_health_changed"]
 [connection signal="timeout" from="Attack_Rate" to="." method="_on_Attack_Rate_timeout"]

@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 func check_boat_collision():
 	var collision: KinematicCollision2D = get_last_slide_collision()
 	if collision !=  null:
-		#print(collision.collider.name)
+		#print(collision.collider_shape)
 		if collision.collider.name == "Boat":
 			var boat = collision.collider
 			boat.take_damage(bullet_damage)
