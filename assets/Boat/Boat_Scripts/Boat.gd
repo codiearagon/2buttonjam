@@ -1,9 +1,14 @@
 extends KinematicBody2D
 
 # Health
-export var health: int = 100
+signal health_changed(value)
+
+export var max_health: int = 100
+var health: int = 0
 
 # Key
+signal obtained_key(value)
+
 var obtained_key: bool = false
 
 # Movement Variables
@@ -13,17 +18,11 @@ var velocity = Vector2.ZERO
 var rotation_dir = 0
 var speed = 0
 
-# Movement
-func get_input() -> void:
-	if Input.is_action_pressed("row_left"):
-		rotation_dir += 1
-		speed = maxSpeed
-	if Input.is_action_pressed("row_right"):
-		rotation_dir -= 1
-		speed = maxSpeed
-		
-	velocity = Vector2(0, -speed).rotated(rotation)
-	
+func _ready():
+	health = max_health
+	emit_signal("health_changed", health)
+	emit_signal("obtained_key", obtained_key)
+
 func _physics_process(delta: float) -> void:
 	get_input()
 	rotation = lerp_angle(rotation, rotation_dir * rotation_speed, delta)
@@ -34,18 +33,31 @@ func _physics_process(delta: float) -> void:
 	
 	# collisions
 	check_gate_collision()
-
+	
+	
+func get_input() -> void:
+	if Input.is_action_pressed("row_left"):
+		rotation_dir += 1
+		speed = maxSpeed
+	if Input.is_action_pressed("row_right"):
+		rotation_dir -= 1
+		speed = maxSpeed
+		
+	velocity = Vector2(0, -speed).rotated(rotation)
+	
+	
 func check_gate_collision():
 	var collision: KinematicCollision2D = get_last_slide_collision()
 	if collision !=  null:
 		if collision.collider.name == "Gate":
 			if obtained_key:
 				collision.collider.set_unlocked(true)
-			else:
-				print("No key")
 
+func obtained_key():
+	obtained_key = true
+	emit_signal("obtained_key", obtained_key)
 
 func take_damage(amount: int):
 	health -= amount
 	health = clamp(health, 0, 100)
-	print(health)
+	emit_signal("health_changed", health)

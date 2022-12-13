@@ -1,0 +1,40 @@
+[gd_scene format=2]
+
+[node name="PlayerUI" type="Control"]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 168.0
+margin_bottom = 40.0
+
+[node name="Health" type="Panel" parent="HBoxContainer"]
+margin_right = 82.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Health"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+text = "HP: 100"
+valign = 1
+
+[node name="Key" type="Panel" parent="HBoxContainer"]
+margin_left = 86.0
+margin_right = 168.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Key"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+text = "Key: No"
+valign = 1
