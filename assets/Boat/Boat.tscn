@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Boat/Textures/Oar.png" type="Texture" id=1]
 [ext_resource path="res://assets/Boat/Textures/BoatMC.png" type="Texture" id=2]
@@ -8,22 +8,18 @@
 [ext_resource path="res://assets/Boat/Boat_Scripts/InvertRotation.gd" type="Script" id=7]
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 2
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 2
 atlas = ExtResource( 3 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 2
 atlas = ExtResource( 3 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 2
 atlas = ExtResource( 3 )
 region = Rect2( 96, 0, 32, 32 )
 
@@ -39,12 +35,12 @@ animations = [ {
 radius = 30.0
 height = 44.0
 
-[sub_resource type="CircleShape2D" id=11]
-radius = 32.0624
-
 [node name="Boat" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 5 )
+bullet_damage = 5
+bullet_speed = 300.0
+attack_rate = 1.0
 
 [node name="Center" type="Node2D" parent="."]
 position = Vector2( 0, -51 )
@@ -75,10 +71,7 @@ script = ExtResource( 7 )
 position = Vector2( 0, -53 )
 shape = SubResource( 8 )
 
-[node name="Deflector" type="KinematicBody2D" parent="."]
-collision_layer = 32
-collision_mask = 40
+[node name="Attack_Rate" type="Timer" parent="."]
+autostart = true
 
-[node name="DeflectorCollision" type="CollisionShape2D" parent="Deflector"]
-position = Vector2( 0, -77 )
-shape = SubResource( 11 )
+[connection signal="timeout" from="Attack_Rate" to="." method="_on_Attack_Rate_timeout"]

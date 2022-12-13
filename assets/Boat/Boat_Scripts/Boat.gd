@@ -6,6 +6,13 @@ signal health_changed(value)
 export var max_health: int = 100
 var health: int = 0
 
+# Attack
+export var bullet_damage: int
+export var bullet_speed: float
+export var attack_rate: float
+
+var bullet = preload("../PlayerBullet.tscn")
+
 # Key
 signal obtained_key(value)
 
@@ -20,6 +27,8 @@ var speed = 0
 
 func _ready():
 	health = max_health
+	
+	get_node("Attack_Rate").wait_time = attack_rate
 	emit_signal("health_changed", health)
 	emit_signal("obtained_key", have_key)
 
@@ -61,3 +70,11 @@ func take_damage(amount: int):
 	health -= amount
 	health = clamp(health, 0, 100)
 	emit_signal("health_changed", health)
+
+func _on_Attack_Rate_timeout() -> void:
+	var new_bullet = bullet.instance()
+	new_bullet.position = get_node("Center").global_position
+	#new_bullet.position.y -= 50
+	new_bullet.bullet_speed = bullet_speed
+	new_bullet.bullet_damage = bullet_damage
+	get_parent().add_child(new_bullet)
