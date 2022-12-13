@@ -8,33 +8,29 @@ margin_bottom = 600.0
 margin_right = 168.0
 margin_bottom = 40.0
 
-[node name="Health" type="Panel" parent="HBoxContainer"]
+[node name="Health" type="PanelContainer" parent="HBoxContainer"]
 margin_right = 82.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/Health"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_left = 7.0
+margin_top = 13.0
+margin_right = 75.0
+margin_bottom = 27.0
 text = "HP: 100"
 valign = 1
 
-[node name="Key" type="Panel" parent="HBoxContainer"]
+[node name="Key" type="PanelContainer" parent="HBoxContainer"]
 margin_left = 86.0
 margin_right = 168.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/Key"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_left = 7.0
+margin_top = 13.0
+margin_right = 75.0
+margin_bottom = 27.0
 text = "Key: No"
 valign = 1

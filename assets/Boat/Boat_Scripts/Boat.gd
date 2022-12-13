@@ -9,7 +9,7 @@ var health: int = 0
 # Key
 signal obtained_key(value)
 
-var obtained_key: bool = false
+var have_key: bool = false
 
 # Movement Variables
 export var maxSpeed: int = 50
@@ -21,7 +21,7 @@ var speed = 0
 func _ready():
 	health = max_health
 	emit_signal("health_changed", health)
-	emit_signal("obtained_key", obtained_key)
+	emit_signal("obtained_key", have_key)
 
 func _physics_process(delta: float) -> void:
 	get_input()
@@ -50,12 +50,12 @@ func check_gate_collision():
 	var collision: KinematicCollision2D = get_last_slide_collision()
 	if collision !=  null:
 		if collision.collider.name == "Gate":
-			if obtained_key:
+			if have_key:
 				collision.collider.set_unlocked(true)
 
 func obtained_key():
-	obtained_key = true
-	emit_signal("obtained_key", obtained_key)
+	have_key = true
+	emit_signal("obtained_key", have_key)
 
 func take_damage(amount: int):
 	health -= amount
