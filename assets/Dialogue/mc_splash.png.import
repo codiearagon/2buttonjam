@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gate.png-f813508cfb9c4fc9811f2b256553cc06.stex"
+path="res://.import/mc_splash.png-7535dc23d646452d3cc6816f4f846eb6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Gate/gate.png"
-dest_files=[ "res://.import/gate.png-f813508cfb9c4fc9811f2b256553cc06.stex" ]
+source_file="res://assets/Dialogue/mc_splash.png"
+dest_files=[ "res://.import/mc_splash.png-7535dc23d646452d3cc6816f4f846eb6.stex" ]
 
 [params]
 

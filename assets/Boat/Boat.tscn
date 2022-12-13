@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/Boat/Textures/Oar.png" type="Texture" id=1]
 [ext_resource path="res://assets/Boat/Textures/BoatMC.png" type="Texture" id=2]
@@ -7,22 +7,23 @@
 [ext_resource path="res://assets/Boat/Boat_Scripts/Boat.gd" type="Script" id=5]
 [ext_resource path="res://assets/Boat/Boat_Scripts/InvertRotation.gd" type="Script" id=7]
 
-[sub_resource type="CanvasItemMaterial" id=7]
-blend_mode = 1
-
 [sub_resource type="AtlasTexture" id=2]
+flags = 2
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 2
 atlas = ExtResource( 3 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
+flags = 2
 atlas = ExtResource( 3 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
+flags = 2
 atlas = ExtResource( 3 )
 region = Rect2( 96, 0, 32, 32 )
 
@@ -33,18 +34,6 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
-
-[sub_resource type="Gradient" id=9]
-offsets = PoolRealArray( 0.402235, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
-
-[sub_resource type="GradientTexture2D" id=10]
-gradient = SubResource( 9 )
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2( 0.5, 0.5 )
-fill_to = Vector2( 0.6875, 0.308333 )
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 30.0
@@ -75,21 +64,12 @@ offset = Vector2( 20, 0 )
 script = ExtResource( 4 )
 
 [node name="Child" type="AnimatedSprite" parent="."]
-modulate = Color( 1, 1, 1, 0.862745 )
-material = SubResource( 7 )
+modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 0, -24 )
 scale = Vector2( 1.75, 1.75 )
 frames = SubResource( 6 )
 offset = Vector2( 0, -8 )
 script = ExtResource( 7 )
-
-[node name="Light2D" type="Light2D" parent="Child"]
-position = Vector2( 0, -4.57143 )
-scale = Vector2( 1.42857, 1.42857 )
-texture = SubResource( 10 )
-color = Color( 0.509804, 0.678431, 0.705882, 1 )
-energy = 0.75
-range_height = -0.1
 
 [node name="BoatCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -53 )
