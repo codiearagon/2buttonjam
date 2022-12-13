@@ -834,7 +834,6 @@ polygon = PoolVector2Array( 472, 236, 784, 235, 784, 449, 473, 448 )
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="PlayerUI" parent="GUI" instance=ExtResource( 7 )]
-visible = false
 script = ExtResource( 8 )
 
 [connection signal="health_changed" from="Boat" to="GUI/PlayerUI" method="_on_Boat_health_changed"]

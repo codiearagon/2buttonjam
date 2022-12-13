@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Enemy/Phantom/Phantom.gd" type="Script" id=1]
 [ext_resource path="res://assets/Enemy/Phantom/placeholder.png" type="Texture" id=2]
 [ext_resource path="res://assets/Enemy/Phantom/UI.gd" type="Script" id=3]
+[ext_resource path="res://default_theme.tres" type="Theme" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 31.0
@@ -44,9 +45,10 @@ anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="UI/Health"]
 margin_left = 7.0
-margin_top = 8.0
+margin_top = 7.0
 margin_right = 143.0
-margin_bottom = 22.0
+margin_bottom = 23.0
+theme = ExtResource( 4 )
 text = "HP: 10"
 align = 1
 
