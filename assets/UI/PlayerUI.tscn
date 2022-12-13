@@ -38,6 +38,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 5.0
 theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 custom_styles/fg = ExtResource( 3 )
 custom_styles/bg = ExtResource( 4 )
 step = 1.0
