@@ -1,15 +1,47 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Enemy/Phantom/Phantom.gd" type="Script" id=1]
-[ext_resource path="res://assets/Enemy/Phantom/placeholder.png" type="Texture" id=2]
 [ext_resource path="res://assets/Enemy/Phantom/UI.gd" type="Script" id=3]
 [ext_resource path="res://default_theme.tres" type="Theme" id=4]
 [ext_resource path="res://assets/Styles/HealthBG.tres" type="StyleBox" id=5]
 [ext_resource path="res://assets/Styles/HealthFG.tres" type="StyleBox" id=6]
+[ext_resource path="res://assets/Enemy/Phantom/Minion.png" type="Texture" id=7]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 7 )
+region = Rect2( 64, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 7 )
+region = Rect2( 96, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 7 )
+region = Rect2( 128, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 7 )
+region = Rect2( 160, 0, 32, 48 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 31.0
-height = 62.0
+radius = 18.0
+height = 24.0
 
 [node name="Phantom" type="KinematicBody2D"]
 position = Vector2( 114, 198 )
@@ -23,13 +55,14 @@ bullet_damage = 5
 bullet_speed = 100.0
 attack_rate = 4.0
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1, -57 )
-scale = Vector2( 4.96154, 4.96154 )
-texture = ExtResource( 2 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1, -64 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 8 )
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1, -57 )
+position = Vector2( 0, -64 )
 shape = SubResource( 1 )
 
 [node name="Attack_Rate" type="Timer" parent="."]

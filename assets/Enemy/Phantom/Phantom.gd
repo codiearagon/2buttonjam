@@ -21,9 +21,9 @@ func _physics_process(delta: float) -> void:
 
 func flip_sprite(direction):
 	if sign(direction.x) < 0:
-		get_node("Sprite").set_flip_h(true)
+		get_node("AnimatedSprite").set_flip_h(true)
 	else:
-		get_node("Sprite").set_flip_h(false)
+		get_node("AnimatedSprite").set_flip_h(false)
 
 func _on_Attack_Rate_timeout() -> void:
 	var new_bullet = bullet.instance()
