@@ -53,13 +53,13 @@ health = 10
 movement_speed = 50
 bullet_damage = 5
 bullet_speed = 100.0
-attack_rate = 4.0
+attack_rate = 2.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1, -64 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -67,7 +67,6 @@ position = Vector2( 0, -64 )
 shape = SubResource( 1 )
 
 [node name="Attack_Rate" type="Timer" parent="."]
-autostart = true
 
 [node name="UI" type="Control" parent="."]
 margin_left = -75.0

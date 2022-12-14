@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Boat/Boat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Boat/Boat_Scripts/Camera.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://assets/Enemy/Phantom/Phantom.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/Gate/Goal_Area.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/Scenes/Level.gd" type="Script" id=11]
+
+[sub_resource type="CanvasItemMaterial" id=33]
 
 [sub_resource type="Shader" id=31]
 code = "shader_type canvas_item;
@@ -27,6 +29,7 @@ shader = SubResource( 31 )
 script = ExtResource( 11 )
 
 [node name="Walls" type="TileMap" parent="."]
+material = SubResource( 33 )
 scale = Vector2( 2, 2 )
 tile_set = ExtResource( 5 )
 cell_size = Vector2( 32, 32 )
@@ -52,6 +55,7 @@ material = SubResource( 32 )
 position = Vector2( 413, 525 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="PlayerUI" parent="GUI" instance=ExtResource( 7 )]
 anchor_right = 1.0

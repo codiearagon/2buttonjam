@@ -17,6 +17,12 @@ func _physics_process(delta: float) -> void:
 	if position.distance_to(boat_position) >= 350:
 		move_and_slide(direction * movement_speed)
 		
+		if !$Attack_Rate.is_stopped():
+			$Attack_Rate.stop()
+	else:
+		if $Attack_Rate.is_stopped():
+			$Attack_Rate.start()
+	
 	flip_sprite(direction)
 
 func flip_sprite(direction):

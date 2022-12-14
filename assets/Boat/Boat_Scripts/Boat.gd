@@ -43,7 +43,6 @@ func _physics_process(delta: float) -> void:
 	# collisions
 	check_gate_collision()
 	
-	
 func get_input() -> void:
 	if Input.is_action_pressed("row_left"):
 		rotation_dir += 1
@@ -51,7 +50,7 @@ func get_input() -> void:
 	if Input.is_action_pressed("row_right"):
 		rotation_dir -= 1
 		speed = max_speed
-		
+			
 	velocity = Vector2(0, -speed).rotated(rotation)
 	
 	
@@ -81,3 +80,4 @@ func _on_Attack_Rate_timeout() -> void:
 	new_bullet.bullet_speed = bullet_speed
 	new_bullet.bullet_damage = bullet_damage
 	get_parent().add_child(new_bullet)
+	pass

@@ -6,7 +6,6 @@ func _ready():
 	$Survive_Timer.wait_time = timer_max
 	
 	$GUI/Events/Start.start()
-	yield($GUI/Events/Start.start(), "completed")
 	$Survive_Timer.start()
 	start_all_spawners()
 	
@@ -23,7 +22,7 @@ func _on_Survive_Timer_timeout() -> void:
 	$Boat/Attack_Rate.stop()
 	kill_all_enemy_instances()
 		
-	$GUI/Events/End.survived("res://assets/Scenes/Level.tscn")
+	$GUI/Events/End.survived("res://assets/Scenes/Level_3.tscn")
 
 func start_all_spawners():
 	var spawners = get_tree().get_nodes_in_group("Spawners")
