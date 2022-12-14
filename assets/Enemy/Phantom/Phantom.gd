@@ -27,6 +27,7 @@ func flip_sprite(direction):
 
 func _on_Attack_Rate_timeout() -> void:
 	var new_bullet = bullet.instance()
+	new_bullet.add_to_group("Enemy_Bullets")
 	new_bullet.position = position
 	new_bullet.position.y -= 50
 	new_bullet.bullet_speed = bullet_speed

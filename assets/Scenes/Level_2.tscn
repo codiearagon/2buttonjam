@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/Boat/Boat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/UI/PlayerUI.tscn" type="PackedScene" id=2]
@@ -9,8 +9,9 @@
 [ext_resource path="res://assets/Tilemaps/default.tres" type="TileSet" id=7]
 [ext_resource path="res://assets/Font/AnalogueOS-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://default_theme.tres" type="Theme" id=9]
-[ext_resource path="res://assets/UI/Timer.gd" type="Script" id=10]
+[ext_resource path="res://assets/Scenes/Level_2.gd" type="Script" id=10]
 [ext_resource path="res://assets/Scenes/Start.gd" type="Script" id=11]
+[ext_resource path="res://assets/Scenes/End.gd" type="Script" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.2, 0.192157, 0.239216, 1 )
@@ -67,9 +68,45 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="DynamicFont" id=6]
+resource_local_to_scene = true
+size = 50
+extra_spacing_top = 1
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Fade"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("End:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 4.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("End:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="Level_2" type="Node2D"]
 script = ExtResource( 10 )
-max_seconds = 10
 
 [node name="Walls" type="TileMap" parent="."]
 tile_set = ExtResource( 7 )
@@ -127,6 +164,9 @@ margin_top = -38.0
 margin_right = 264.0
 margin_bottom = 38.0
 script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Start" type="Label" parent="GUI/Events/Start"]
 modulate = Color( 1, 1, 1, 0 )
@@ -142,10 +182,34 @@ valign = 1
 anims/Fade = SubResource( 4 )
 anims/RESET = SubResource( 5 )
 
-[node name="Spawner" parent="." instance=ExtResource( 3 )]
-position = Vector2( 566, 306 )
-enemy_to_spawn = ExtResource( 4 )
-spawn_rate = 5.0
+[node name="End" type="Control" parent="GUI/Events"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -264.0
+margin_top = -38.0
+margin_right = 264.0
+margin_bottom = 38.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": true,
+"_editor_description_": ""
+}
+
+[node name="End" type="Label" parent="GUI/Events/End"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 6 )
+text = "You survived"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Events/End"]
+anims/Fade = SubResource( 7 )
+anims/RESET = SubResource( 8 )
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
@@ -153,7 +217,24 @@ smoothing_enabled = true
 script = ExtResource( 6 )
 
 [node name="Survive_Timer" type="Timer" parent="."]
+wait_time = 120.0
 one_shot = true
+
+[node name="Spawner" parent="." instance=ExtResource( 3 )]
+position = Vector2( 686, 962 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="Spawner2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1633, 150 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="Spawner3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1790, 979 )
+enemy_to_spawn = ExtResource( 4 )
+
+[node name="Spawner4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 227, 1676 )
+enemy_to_spawn = ExtResource( 4 )
 
 [connection signal="health_changed" from="Boat" to="GUI/PlayerUI" method="_on_Boat_health_changed"]
 [connection signal="obtained_key" from="Boat" to="GUI/PlayerUI" method="_on_Boat_obtained_key"]
