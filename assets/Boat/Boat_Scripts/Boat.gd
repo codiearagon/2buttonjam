@@ -19,7 +19,7 @@ signal obtained_key(value)
 var have_key: bool = false
 
 # Movement Variables
-export var maxSpeed: int = 50
+export var max_speed: int = 50
 export var rotation_speed: float = 0.03
 var velocity = Vector2.ZERO
 var rotation_dir = 0
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	velocity = move_and_slide(velocity)
 	
 	speed = lerp(speed, 0, 0.05)
-	speed = clamp(speed, 0, maxSpeed)
+	speed = clamp(speed, 0, max_speed)
 	
 	# collisions
 	check_gate_collision()
@@ -47,10 +47,10 @@ func _physics_process(delta: float) -> void:
 func get_input() -> void:
 	if Input.is_action_pressed("row_left"):
 		rotation_dir += 1
-		speed = maxSpeed
+		speed = max_speed
 	if Input.is_action_pressed("row_right"):
 		rotation_dir -= 1
-		speed = maxSpeed
+		speed = max_speed
 		
 	velocity = Vector2(0, -speed).rotated(rotation)
 	

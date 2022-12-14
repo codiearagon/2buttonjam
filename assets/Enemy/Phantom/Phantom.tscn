@@ -21,7 +21,7 @@ health = 10
 movement_speed = 50
 bullet_damage = 5
 bullet_speed = 100.0
-attack_rate = 2.0
+attack_rate = 4.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 1, -57 )

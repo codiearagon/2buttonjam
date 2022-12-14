@@ -1,13 +1,15 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/Boat/Boat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Boat/Boat_Scripts/Camera.gd" type="Script" id=2]
 [ext_resource path="res://assets/Gate/Gate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Key/Key.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Tilemaps/finaltiles.png" type="Texture" id=5]
-[ext_resource path="res://assets/Enemy/Phantom/Phantom.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/Enemy/Spawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/UI/PlayerUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/UI/PlayerUI.gd" type="Script" id=8]
+[ext_resource path="res://assets/Enemy/Phantom/Phantom.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/Gate/Goal_Area.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -799,7 +801,6 @@ position = Vector2( 843, 257 )
 [node name="Boat" parent="." instance=ExtResource( 1 )]
 material = SubResource( 32 )
 position = Vector2( 413, 525 )
-maxSpeed = 80
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -810,11 +811,13 @@ margin_right = 0.0
 margin_bottom = 0.0
 script = ExtResource( 8 )
 
-[node name="Phantom" parent="." instance=ExtResource( 6 )]
-position = Vector2( 173, 422 )
+[node name="Spawner" parent="." instance=ExtResource( 6 )]
+position = Vector2( 94, 187 )
+enemy_to_spawn = ExtResource( 9 )
+spawn_rate = 5.0
 
-[node name="Phantom2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 532, 433 )
+[node name="Goal_Area" parent="Spawner" instance=ExtResource( 10 )]
+position = Vector2( 492, -208 )
 
 [connection signal="health_changed" from="Boat" to="GUI/PlayerUI" method="_on_Boat_health_changed"]
 [connection signal="obtained_key" from="Boat" to="GUI/PlayerUI" method="_on_Boat_obtained_key"]
