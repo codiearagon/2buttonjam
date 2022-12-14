@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Boat/Boat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/UI/PlayerUI.tscn" type="PackedScene" id=2]
@@ -6,29 +6,83 @@
 [ext_resource path="res://assets/Enemy/Phantom/Phantom.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/UI/PlayerUI.gd" type="Script" id=5]
 [ext_resource path="res://assets/Boat/Boat_Scripts/Camera.gd" type="Script" id=6]
+[ext_resource path="res://assets/Tilemaps/default.tres" type="TileSet" id=7]
+[ext_resource path="res://assets/Font/AnalogueOS-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://default_theme.tres" type="Theme" id=9]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.2, 0.192157, 0.239216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.14902, 0.145098, 0.176471, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 40
+extra_spacing_top = 5
+font_data = ExtResource( 8 )
 
 [node name="Level_2" type="Node2D"]
+
+[node name="Walls" type="TileMap" parent="."]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 9, 0, 2, 9, 0, 3, 9, 0, 4, 9, 0, 5, 9, 0, 6, 9, 0, 7, 9, 0, 8, 9, 0, 9, 9, 0, 10, 9, 0, 11, 9, 0, 12, 9, 0, 13, 9, 0, 14, 9, 0, 15, 9, 0, 16, 9, 0, 17, 9, 0, 18, 9, 0, 19, 9, 0, 20, 9, 0, 21, 9, 0, 22, 9, 0, 23, 9, 0, 24, 9, 0, 25, 9, 0, 26, 9, 0, 27, 9, 0, 28, 9, 0, 29, 9, 0, 30, 9, 0, 31, 9, 0, 32, 9, 0, 33, 9, 0, 34, 9, 0, 35, 9, 0, 36, 9, 0, 37, 9, 0, 38, 9, 0, 39, 9, 0, 40, 9, 0, 41, 9, 0, 42, 9, 0, 43, 9, 0, 44, 9, 0, 45, 9, 0, 46, 9, 0, 47, 9, 0, 48, 9, 0, 49, 9, 0, 50, 9, 0, 51, 9, 0, 52, 9, 0, 53, 9, 0, 54, 9, 0, 55, 9, 0, 56, 9, 0, 57, 9, 0, 58, 9, 0, 59, 9, 0, 60, 1, 0, 65536, 15, 0, 65596, 20, 0, 131072, 15, 0, 131132, 20, 0, 196608, 15, 0, 196668, 20, 0, 262144, 15, 0, 262204, 20, 0, 327680, 15, 0, 327740, 20, 0, 393216, 15, 0, 393276, 20, 0, 458752, 15, 0, 458812, 20, 0, 524288, 15, 0, 524348, 20, 0, 589824, 15, 0, 589884, 20, 0, 655360, 15, 0, 655420, 20, 0, 720896, 15, 0, 720956, 20, 0, 786432, 15, 0, 786492, 20, 0, 851968, 15, 0, 852028, 20, 0, 917504, 15, 0, 917564, 20, 0, 983040, 15, 0, 983100, 20, 0, 1048576, 15, 0, 1048636, 20, 0, 1114112, 15, 0, 1114172, 20, 0, 1179648, 15, 0, 1179708, 20, 0, 1245184, 15, 0, 1245244, 20, 0, 1310720, 15, 0, 1310780, 20, 0, 1376256, 15, 0, 1376316, 20, 0, 1441792, 15, 0, 1441852, 20, 0, 1507328, 15, 0, 1507388, 20, 0, 1572864, 15, 0, 1572924, 20, 0, 1638400, 15, 0, 1638460, 20, 0, 1703936, 15, 0, 1703996, 20, 0, 1769472, 15, 0, 1769532, 20, 0, 1835008, 15, 0, 1835068, 20, 0, 1900544, 15, 0, 1900604, 20, 0, 1966080, 15, 0, 1966140, 20, 0, 2031616, 15, 0, 2031676, 20, 0, 2097152, 15, 0, 2097212, 20, 0, 2162688, 15, 0, 2162748, 20, 0, 2228224, 15, 0, 2228284, 20, 0, 2293760, 15, 0, 2293820, 20, 0, 2359296, 15, 0, 2359356, 20, 0, 2424832, 15, 0, 2424892, 20, 0, 2490368, 15, 0, 2490428, 20, 0, 2555904, 15, 0, 2555964, 20, 0, 2621440, 15, 0, 2621500, 20, 0, 2686976, 15, 0, 2687036, 20, 0, 2752512, 15, 0, 2752572, 20, 0, 2818048, 15, 0, 2818108, 20, 0, 2883584, 15, 0, 2883644, 20, 0, 2949120, 15, 0, 2949180, 20, 0, 3014656, 15, 0, 3014716, 20, 0, 3080192, 15, 0, 3080252, 20, 0, 3145728, 15, 0, 3145788, 20, 0, 3211264, 15, 0, 3211324, 20, 0, 3276800, 15, 0, 3276860, 20, 0, 3342336, 15, 0, 3342396, 20, 0, 3407872, 15, 0, 3407932, 20, 0, 3473408, 15, 0, 3473468, 20, 0, 3538944, 15, 0, 3539004, 20, 0, 3604480, 2, 0, 3604481, 11, 0, 3604482, 11, 0, 3604483, 11, 0, 3604484, 11, 0, 3604485, 11, 0, 3604486, 11, 0, 3604487, 11, 0, 3604488, 11, 0, 3604489, 11, 0, 3604490, 11, 0, 3604491, 11, 0, 3604492, 11, 0, 3604493, 11, 0, 3604494, 11, 0, 3604495, 11, 0, 3604496, 11, 0, 3604497, 11, 0, 3604498, 11, 0, 3604499, 11, 0, 3604500, 11, 0, 3604501, 11, 0, 3604502, 11, 0, 3604503, 11, 0, 3604504, 11, 0, 3604505, 11, 0, 3604506, 11, 0, 3604507, 11, 0, 3604508, 11, 0, 3604509, 11, 0, 3604510, 11, 0, 3604511, 11, 0, 3604512, 11, 0, 3604513, 11, 0, 3604514, 11, 0, 3604515, 11, 0, 3604516, 11, 0, 3604517, 11, 0, 3604518, 11, 0, 3604519, 11, 0, 3604520, 11, 0, 3604521, 11, 0, 3604522, 11, 0, 3604523, 11, 0, 3604524, 11, 0, 3604525, 11, 0, 3604526, 11, 0, 3604527, 11, 0, 3604528, 11, 0, 3604529, 11, 0, 3604530, 11, 0, 3604531, 11, 0, 3604532, 11, 0, 3604533, 11, 0, 3604534, 11, 0, 3604535, 11, 0, 3604536, 11, 0, 3604537, 11, 0, 3604538, 11, 0, 3604539, 11, 0, 3604540, 3, 0 )
 
 [node name="Boat" parent="." instance=ExtResource( 1 )]
 position = Vector2( 147, 205 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="PlayerUI" parent="CanvasLayer" instance=ExtResource( 2 )]
+[node name="PlayerUI" parent="GUI" instance=ExtResource( 2 )]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 0.0
 margin_bottom = 0.0
 script = ExtResource( 5 )
 
+[node name="Timer" type="Control" parent="GUI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -92.0
+margin_top = 25.0
+margin_right = 93.0
+margin_bottom = 80.0
+
+[node name="Panel" type="PanelContainer" parent="GUI/Timer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label" type="Label" parent="GUI/Timer/Panel"]
+margin_left = 2.0
+margin_top = 7.0
+margin_right = 183.0
+margin_bottom = 48.0
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 2 )
+text = "2:00"
+align = 1
+valign = 1
+
 [node name="Spawner" parent="." instance=ExtResource( 3 )]
 position = Vector2( 566, 306 )
 enemy_to_spawn = ExtResource( 4 )
+spawn_rate = 5.0
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 smoothing_enabled = true
 script = ExtResource( 6 )
 
-[connection signal="health_changed" from="Boat" to="CanvasLayer/PlayerUI" method="_on_Boat_health_changed"]
-[connection signal="obtained_key" from="Boat" to="CanvasLayer/PlayerUI" method="_on_Boat_obtained_key"]
+[node name="Survive_Timer" type="Timer" parent="."]
+
+[connection signal="health_changed" from="Boat" to="GUI/PlayerUI" method="_on_Boat_health_changed"]
+[connection signal="obtained_key" from="Boat" to="GUI/PlayerUI" method="_on_Boat_obtained_key"]
