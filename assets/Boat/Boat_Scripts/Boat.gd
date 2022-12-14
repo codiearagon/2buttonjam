@@ -70,6 +70,9 @@ func take_damage(amount: int):
 	health -= amount
 	health = clamp(health, 0, 100)
 	emit_signal("health_changed", health, max_health)
+	
+	if health <= 0:
+		SceneTransition.change_scene("res://assets/Scenes/Death.tscn")
 
 func _on_Attack_Rate_timeout() -> void:
 	var new_bullet = bullet.instance()
