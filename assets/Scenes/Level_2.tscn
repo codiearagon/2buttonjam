@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Boat/Boat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/UI/PlayerUI.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Tilemaps/default.tres" type="TileSet" id=7]
 [ext_resource path="res://assets/Font/AnalogueOS-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://default_theme.tres" type="Theme" id=9]
+[ext_resource path="res://assets/Scenes/Timer.gd" type="Script" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.2, 0.192157, 0.239216, 1 )
@@ -29,6 +30,7 @@ extra_spacing_top = 5
 font_data = ExtResource( 8 )
 
 [node name="Level_2" type="Node2D"]
+script = ExtResource( 10 )
 
 [node name="Walls" type="TileMap" parent="."]
 tile_set = ExtResource( 7 )
@@ -83,6 +85,8 @@ smoothing_enabled = true
 script = ExtResource( 6 )
 
 [node name="Survive_Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="health_changed" from="Boat" to="GUI/PlayerUI" method="_on_Boat_health_changed"]
 [connection signal="obtained_key" from="Boat" to="GUI/PlayerUI" method="_on_Boat_obtained_key"]
+[connection signal="timeout" from="Survive_Timer" to="." method="_on_Survive_Timer_timeout"]
