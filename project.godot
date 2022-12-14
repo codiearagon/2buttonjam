@@ -14,6 +14,10 @@ config/name="2 Buttonjam"
 run/main_scene="res://assets/Scenes/Level.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+SceneTransition="*res://assets/Scenes/Scene_Transition.tscn"
+
 [editor]
 
 version_control_autoload_on_startup=true
