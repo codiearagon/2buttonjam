@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-signal health_changed(value)
+signal health_changed(value, max_value)
 
 export var max_health: int = 0
 export var health: int = 0

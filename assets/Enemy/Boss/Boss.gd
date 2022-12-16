@@ -10,24 +10,25 @@ func _ready():
 	attack_rate = 2
 	
 	health = max_health
+	emit_signal("health_changed", health, max_health)
 	
 
 func _physics_process(delta: float) -> void:
 	
-	if health < max_health * .75 && health > max_health * .50:
+	if health <= max_health * .75 && health > max_health * .50:
 		first_phase_change()
 		
-	elif health < max_health * .50 && health > max_health * .25:
+	elif health <= max_health * .50 && health > max_health * .25:
 		second_phase_change()
 		
-	elif health < max_health * .25:
+	elif health <= max_health * .25:
 		third_phase_change()
 		
 	else:
 		default_phase()
 	
+	
 func default_phase():
-	print(boat.position)
 	pass
 
 func first_phase_change():
@@ -38,3 +39,14 @@ func second_phase_change():
 
 func third_phase_change():
 	pass
+
+func receive_damage(amount: float):
+	health -= amount
+	
+	health = clamp(health, 0, max_health)
+	emit_signal("health_changed", health, max_health)
+	if health <= 0:
+		death()
+		
+func death():
+	queue_free()
