@@ -66,6 +66,10 @@ margin_bottom = 0.0
 script = ExtResource( 8 )
 
 [node name="dialogue_system" parent="GUI" instance=ExtResource( 13 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
 
 [node name="Spawner" parent="." instance=ExtResource( 6 )]
 position = Vector2( 94, 187 )
