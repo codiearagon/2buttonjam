@@ -31,6 +31,10 @@ margin_right = 0.0
 margin_bottom = 0.0
 script = ExtResource( 5 )
 
+[node name="EnemyUI" type="Control" parent="GUI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 smoothing_enabled = true
