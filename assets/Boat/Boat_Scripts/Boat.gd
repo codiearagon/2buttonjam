@@ -44,10 +44,10 @@ func _physics_process(delta: float) -> void:
 	check_gate_collision()
 	
 func get_input() -> void:
-	if Input.is_action_pressed("row_left"):
+	if Input.is_action_pressed("row_left") and !Input.is_action_pressed("row_right"):
 		rotation_dir += 1
 		speed = max_speed
-	if Input.is_action_pressed("row_right"):
+	if Input.is_action_pressed("row_right") and !Input.is_action_pressed("row_left"):
 		rotation_dir -= 1
 		speed = max_speed
 			
