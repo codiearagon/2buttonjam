@@ -9,7 +9,7 @@ var direction = Vector2.ZERO
 func _ready():
 	boat_position = get_parent().get_node("./Boat").position
 	boat_rotation = get_parent().get_node("./Boat").rotation
-	direction = Vector2(0, -1).rotated(boat_rotation)
+	direction = Vector2(0, 1).rotated(boat_rotation)
 	
 func _physics_process(delta: float) -> void: 
 	move_and_slide(direction * bullet_speed)
