@@ -59,7 +59,7 @@ attack_rate = 2.0
 position = Vector2( 1, -64 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
