@@ -66,9 +66,13 @@ margin_bottom = 0.0
 script = ExtResource( 8 )
 
 [node name="dialogue_system" parent="GUI" instance=ExtResource( 13 )]
-anchor_right = 1.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_right = 0.0
+margin_left = -512.0
+margin_top = -600.0
+margin_right = 512.0
 margin_bottom = 0.0
 
 [node name="Spawner" parent="." instance=ExtResource( 6 )]
