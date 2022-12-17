@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Font/AnalogueOS-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Music/Level_2.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/Scenes/Win.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+resource_local_to_scene = true
+size = 50
+extra_spacing_top = 1
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 30
+extra_spacing_top = 1
+font_data = ExtResource( 2 )
+
+[node name="Win" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Win_Text" type="Label" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "You win"
+align = 1
+valign = 1
+
+[node name="Restart_Text" type="Label" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 100.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Respawning in 5..."
+align = 1
+valign = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

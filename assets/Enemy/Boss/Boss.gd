@@ -12,7 +12,7 @@ var at_third_phase: bool = false
 var phase = 0
 
 func _ready():
-	max_health = 100
+	max_health = 5
 	
 	health = max_health
 	emit_signal("health_changed", health, max_health)
@@ -20,17 +20,18 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	
-	if health <= max_health * .75 && health > max_health * .50:
-		first_phase_change()
-		
-	elif health <= max_health * .50 && health > max_health * .25:
-		second_phase_change()
-		
-	elif health <= max_health * .25:
-		third_phase_change()
-		
-	else:
-		default_phase()
+	if health > 0:
+		if health <= max_health * .75 && health > max_health * .50:
+			first_phase_change()
+			
+		elif health <= max_health * .50 && health > max_health * .25:
+			second_phase_change()
+			
+		elif health <= max_health * .25:
+			third_phase_change()
+			
+		else:
+			default_phase()
 	
 	
 func default_phase():
@@ -64,9 +65,9 @@ func first_phase_change():
 		get_node("../Boat/Attack_Rate").start()
 		
 	else:
-		movement_speed = 50
+		movement_speed = 45
 		bullet_damage = 10
-		bullet_speed = 300
+		bullet_speed = 350
 		attack_rate = 1.5
 		
 		var boat_position = boat.global_position
@@ -90,10 +91,10 @@ func second_phase_change():
 		get_node("../Boat/Attack_Rate").start()
 
 	else:
-		movement_speed = 50
+		movement_speed = 40
 		bullet_damage = 10
-		bullet_speed = 200
-		attack_rate = 1.5
+		bullet_speed = 400
+		attack_rate = 3
 		
 		var boat_position = boat.global_position
 		var direction = position.direction_to(boat_position)
@@ -101,7 +102,30 @@ func second_phase_change():
 		move_and_slide(direction * movement_speed)
 
 func third_phase_change():
-	pass
+	if !at_third_phase:
+		movement_speed = 0
+		get_node("../Boat/Attack_Rate").stop()
+		$Attack_Rate.stop()
+		$Phase_Changed.play("Change")
+		clear_all_bullets()
+		$Third_Cannon/RevealTween.interpolate_method($Third_Cannon, "set_modulate", $Third_Cannon.modulate, Color8(255, 255, 255), 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Third_Cannon/RevealTween.start()
+		yield($Phase_Changed, "animation_finished")
+		at_third_phase = true
+		phase = 3
+		$Attack_Rate.start()
+		get_node("../Boat/Attack_Rate").start()
+
+	else:
+		movement_speed = 30
+		bullet_damage = 10
+		bullet_speed = 200
+		attack_rate = 1
+		
+		var boat_position = boat.global_position
+		var direction = position.direction_to(boat_position)
+	
+		move_and_slide(direction * movement_speed)
 
 func receive_damage(amount: float):
 	health -= amount
@@ -112,7 +136,23 @@ func receive_damage(amount: float):
 		death()
 		
 func death():
+	movement_speed = 0
+	get_node("../Boat/Attack_Rate").stop()
+	$Attack_Rate.stop()
+	$Phase_Changed.play("Change")
+	clear_all_bullets()
+	$DeathTween.interpolate_method(self, "set_modulate", self.modulate, Color8(255, 255,  255, 0), 2.0, Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	$First_Cannon/RevealTween.interpolate_method($First_Cannon, "set_modulate", $First_Cannon.modulate, Color8(255, 255,  255, 0), 1.0, Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	$Second_Cannon/RevealTween.interpolate_method($Second_Cannon, "set_modulate", $Second_Cannon.modulate, Color8(255, 255,  255, 0), 1.0, Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	$Third_Cannon/RevealTween.interpolate_method($Third_Cannon, "set_modulate", $Third_Cannon.modulate, Color8(255, 255,  255, 0), 1.0, Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	$DeathTween.start()
+	$First_Cannon/RevealTween.start()
+	$Second_Cannon/RevealTween.start()
+	$Third_Cannon/RevealTween.start()
+	yield($Phase_Changed, "animation_finished")
 	queue_free()
+	
+	SceneTransition.change_scene("res://assets/Scenes/Win.tscn")
 
 func _on_Attack_Rate_timeout() -> void:
 	if phase == 1:
@@ -122,6 +162,12 @@ func _on_Attack_Rate_timeout() -> void:
 		spawn_boss_bullet()
 		spawn_cannon_bullet($First_Cannon/Muzzle)
 		spawn_cannon_bullet($Second_Cannon/Muzzle)
+		
+	elif phase == 3:
+		spawn_boss_bullet()
+		spawn_cannon_bullet($First_Cannon/Muzzle)
+		spawn_cannon_bullet($Second_Cannon/Muzzle)
+		spawn_cannon_bullet($Third_Cannon/Muzzle)
 	
 	else:
 		spawn_boss_bullet()

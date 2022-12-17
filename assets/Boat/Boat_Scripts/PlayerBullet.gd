@@ -27,10 +27,9 @@ func get_closest_enemy() -> Vector2:
 	
 	for enemy in phantom_quantity:
 		
-		var VectorCompare:Vector2
-		
 		if current_phantoms[enemy].position.distance_to(boat_position) < closest_position.distance_to(boat_position):
 			closest_position = current_phantoms[enemy].position
+			closest_position.y -= 64
 	return closest_position
 	
 func _physics_process(delta: float) -> void: 
