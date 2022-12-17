@@ -62,11 +62,12 @@ func first_phase_change():
 		at_first_phase = true
 		phase = 1
 		$Attack_Rate.start()
+		get_node("../Boat/Attack_Rate").start()
 		
 	else:
 		movement_speed = 45
 		bullet_damage = 10
-		bullet_speed = 350
+		bullet_speed = 300
 		attack_rate = 1.5
 		
 		var boat_position = boat.global_position
@@ -87,11 +88,12 @@ func second_phase_change():
 		at_second_phase = true
 		phase = 2
 		$Attack_Rate.start()
+		get_node("../Boat/Attack_Rate").start()
 
 	else:
-		movement_speed = 40
+		movement_speed = 45
 		bullet_damage = 10
-		bullet_speed = 400
+		bullet_speed = 350
 		attack_rate = 3
 		
 		var boat_position = boat.global_position
@@ -112,12 +114,13 @@ func third_phase_change():
 		at_third_phase = true
 		phase = 3
 		$Attack_Rate.start()
+		get_node("../Boat/Attack_Rate").start()
 
 	else:
 		movement_speed = 30
 		bullet_damage = 10
 		bullet_speed = 200
-		attack_rate = 0.3
+		attack_rate = 1
 		
 		var boat_position = boat.global_position
 		var direction = position.direction_to(boat_position)
@@ -128,6 +131,7 @@ func receive_damage(amount: float):
 	health -= amount
 	
 	health = clamp(health, 0, max_health)
+	$On_HitSFX.play()
 	emit_signal("health_changed", health, max_health)
 	if health <= 0:
 		death()

@@ -94,6 +94,7 @@ func take_damage(amount: int):
 	$HurtSFX.play()
 	
 	if health <= 0:
+		PreviousScene.prev_scene = get_tree().current_scene.filename
 		SceneTransition.change_scene("res://assets/Scenes/Death.tscn")
 
 func _on_Attack_Rate_timeout() -> void:

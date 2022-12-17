@@ -24,8 +24,6 @@ func check_boat_collision():
 			var boat = collision.collider
 			boat.take_damage(bullet_damage)
 			queue_free()
+		elif collision.collider.name == "Walls":
+			queue_free()
 
-
-
-func _on_VisibilityNotifier2D_viewport_exited(viewport: Viewport) -> void:
-	queue_free()

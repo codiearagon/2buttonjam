@@ -47,7 +47,7 @@ radius = 8.0
 
 [node name="Bullet" type="KinematicBody2D"]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="bullet-sheet" type="AnimatedSprite" parent="."]
@@ -56,14 +56,10 @@ material = SubResource( 10 )
 position = Vector2( 0, -8 )
 scale = Vector2( 1.75, 1.75 )
 frames = SubResource( 9 )
-frame = 2
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -8 )
 scale = Vector2( 0.9, 0.9 )
 shape = SubResource( 1 )
-
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-
-[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

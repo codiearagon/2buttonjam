@@ -54,10 +54,10 @@ collision_mask = 32
 script = ExtResource( 1 )
 max_health = 10
 health = 10
-movement_speed = 100
+movement_speed = 80
 bullet_damage = 5
-bullet_speed = 150.0
-attack_rate = 1.0
+bullet_speed = 100.0
+attack_rate = 1.2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 9 )
