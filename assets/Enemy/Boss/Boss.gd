@@ -62,7 +62,6 @@ func first_phase_change():
 		at_first_phase = true
 		phase = 1
 		$Attack_Rate.start()
-		get_node("../Boat/Attack_Rate").start()
 		
 	else:
 		movement_speed = 45
@@ -88,7 +87,6 @@ func second_phase_change():
 		at_second_phase = true
 		phase = 2
 		$Attack_Rate.start()
-		get_node("../Boat/Attack_Rate").start()
 
 	else:
 		movement_speed = 40
@@ -114,7 +112,6 @@ func third_phase_change():
 		at_third_phase = true
 		phase = 3
 		$Attack_Rate.start()
-		get_node("../Boat/Attack_Rate").start()
 
 	else:
 		movement_speed = 30

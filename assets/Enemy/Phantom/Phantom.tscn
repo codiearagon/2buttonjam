@@ -44,7 +44,7 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 31.0
-height = 22.0
+height = 62.0
 
 [node name="Phantom" type="KinematicBody2D"]
 position = Vector2( 114, 198 )
@@ -63,7 +63,7 @@ material = SubResource( 9 )
 position = Vector2( 1, -64 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
