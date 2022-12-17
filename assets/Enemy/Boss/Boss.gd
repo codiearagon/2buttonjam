@@ -12,7 +12,7 @@ var at_third_phase: bool = false
 var phase = 0
 
 func _ready():
-	max_health = 5
+	max_health = 100
 	
 	health = max_health
 	emit_signal("health_changed", health, max_health)
@@ -120,7 +120,7 @@ func third_phase_change():
 		movement_speed = 30
 		bullet_damage = 10
 		bullet_speed = 200
-		attack_rate = 1
+		attack_rate = 0.3
 		
 		var boat_position = boat.global_position
 		var direction = position.direction_to(boat_position)

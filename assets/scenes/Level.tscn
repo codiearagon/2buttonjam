@@ -50,7 +50,7 @@ script = ExtResource( 2 )
 position = Vector2( 576, 75 )
 
 [node name="Key" parent="." instance=ExtResource( 4 )]
-position = Vector2( -288, 1560 )
+position = Vector2( 722, 319 )
 
 [node name="Boat" parent="." instance=ExtResource( 1 )]
 material = SubResource( 32 )
