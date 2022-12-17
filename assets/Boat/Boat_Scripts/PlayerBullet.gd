@@ -4,17 +4,12 @@ var bullet_speed = 0
 var bullet_damage = 0
 var boat_position = Vector2.ZERO
 var boat_rotation = 0
-var phantom_position = Vector2.ZERO
-var phantom_direction = 0
 var direction = Vector2.ZERO
 
 func _ready():
 	boat_position = get_parent().get_node("./Boat").position
 	boat_rotation = get_parent().get_node("./Boat").rotation
-	direction.x = cos(boat_position.x - phantom_position.x)
-	direction.y = sin(boat_position.y - phantom_position.y)
-
-#	direction = Vector2(0, 1).rotated(boat_rotation)
+	direction = Vector2(0, 1).rotated(boat_rotation)
 
 func get_closest_enemy():
 	var enemies = get_tree().get_nodes_in_group('Phantom')
