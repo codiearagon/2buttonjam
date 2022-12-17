@@ -36,7 +36,7 @@ position = Vector2( 0, -32 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -32 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -46,23 +46,27 @@ shape = SubResource( 1 )
 [node name="Attack_Rate" type="Timer" parent="."]
 
 [node name="First_Cannon" type="Sprite" parent="."]
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -40, -50 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="Muzzle" type="Node2D" parent="First_Cannon"]
-position = Vector2( -0.25, 14 )
+position = Vector2( 15, 0 )
+
+[node name="RevealTween" type="Tween" parent="First_Cannon"]
 
 [node name="Second_Cannon" type="Sprite" parent="."]
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 40, -50 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="Muzzle" type="Node2D" parent="Second_Cannon"]
-position = Vector2( -0.25, 14 )
+position = Vector2( 15, 0 )
+
+[node name="RevealTween" type="Tween" parent="Second_Cannon"]
 
 [connection signal="timeout" from="Attack_Rate" to="." method="_on_Attack_Rate_timeout"]

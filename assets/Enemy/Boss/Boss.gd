@@ -54,18 +54,19 @@ func first_phase_change():
 		get_node("../Boat/Attack_Rate").stop()
 		$Attack_Rate.stop()
 		$Phase_Changed.play("Change")
+		$First_Cannon/RevealTween.interpolate_method($First_Cannon, "set_modulate", $First_Cannon.modulate, Color8(255, 255, 255), 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$First_Cannon/RevealTween.start()
 		yield($Phase_Changed, "animation_finished")
 		at_first_phase = true
 		phase = 1
 		$Attack_Rate.start()
 		get_node("../Boat/Attack_Rate").start()
-		$First_Cannon.visible = true
 		
 	else:
-		movement_speed = 100
+		movement_speed = 50
 		bullet_damage = 10
 		bullet_speed = 300
-		attack_rate = 1
+		attack_rate = 1.5
 		
 		var boat_position = boat.global_position
 		var direction = position.direction_to(boat_position)
@@ -78,18 +79,19 @@ func second_phase_change():
 		get_node("../Boat/Attack_Rate").stop()
 		$Attack_Rate.stop()
 		$Phase_Changed.play("Change")
+		$Second_Cannon/RevealTween.interpolate_method($Second_Cannon, "set_modulate", $Second_Cannon.modulate, Color8(255, 255, 255), 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Second_Cannon/RevealTween.start()
 		yield($Phase_Changed, "animation_finished")
 		at_second_phase = true
 		phase = 2
 		$Attack_Rate.start()
 		get_node("../Boat/Attack_Rate").start()
-		$Second_Cannon.visible = true
 
 	else:
-		movement_speed = 100
+		movement_speed = 50
 		bullet_damage = 10
-		bullet_speed = 250
-		attack_rate = 1
+		bullet_speed = 200
+		attack_rate = 1.5
 		
 		var boat_position = boat.global_position
 		var direction = position.direction_to(boat_position)
