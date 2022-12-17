@@ -84,12 +84,14 @@ func check_gate_collision():
 
 func obtained_key():
 	have_key = true
+	$KeyGetSFX.play()
 	emit_signal("obtained_key", have_key)
 
 func take_damage(amount: int):
 	health -= amount
 	health = clamp(health, 0, 100)
 	emit_signal("health_changed", health, max_health)
+	$HurtSFX.play()
 	
 	if health <= 0:
 		SceneTransition.change_scene("res://assets/Scenes/Death.tscn")
@@ -97,6 +99,7 @@ func take_damage(amount: int):
 func _on_Attack_Rate_timeout() -> void:
 	current_phantoms = get_tree().get_nodes_in_group("Enemies")
 	if current_phantoms.size() != 0 and check_near_enemy():
+		$ShootSFX.play()
 		var new_bullet = bullet.instance()
 		new_bullet.position = get_node("Center").global_position
 		new_bullet.bullet_speed = bullet_speed
