@@ -80,6 +80,7 @@ modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 0, -24 )
 scale = Vector2( 1.75, 1.75 )
 frames = SubResource( 6 )
+frame = 3
 playing = true
 offset = Vector2( 0, -8 )
 script = ExtResource( 7 )

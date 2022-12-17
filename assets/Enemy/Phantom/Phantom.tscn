@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Enemy/Phantom/Phantom.gd" type="Script" id=1]
+[ext_resource path="res://assets/SFX/on_hit_sfx.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/Enemy/Phantom/UI.gd" type="Script" id=3]
 [ext_resource path="res://default_theme.tres" type="Theme" id=4]
 [ext_resource path="res://assets/Styles/HealthBG.tres" type="StyleBox" id=5]
@@ -53,17 +54,16 @@ collision_mask = 32
 script = ExtResource( 1 )
 max_health = 10
 health = 10
-movement_speed = 50
+movement_speed = 100
 bullet_damage = 5
-bullet_speed = 100.0
-attack_rate = 2.0
+bullet_speed = 150.0
+attack_rate = 1.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 9 )
 position = Vector2( 1, -64 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
-frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -100,6 +100,9 @@ text = "HP: 10"
 align = 1
 
 [node name="OnHitTween" type="Tween" parent="UI/Health"]
+
+[node name="On_HitSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
 
 [connection signal="health_changed" from="." to="UI" method="_on_Phantom_health_changed"]
 [connection signal="timeout" from="Attack_Rate" to="." method="_on_Attack_Rate_timeout"]

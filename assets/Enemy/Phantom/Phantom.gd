@@ -44,6 +44,7 @@ func receive_damage(amount: float):
 	health -= amount
 	health = clamp(health, 0, 10)
 	
+	$On_HitSFX.play()
 	emit_signal("health_changed", health, max_health)
 	if health <= 0:
 		queue_free()
