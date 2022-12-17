@@ -1,31 +1,37 @@
 extends KinematicBody2D
 
+
 var bullet_speed = 0
 var bullet_damage = 0
 var boat_position = Vector2.ZERO
 var boat_rotation = 0
+var phantom_quantity
+var current_phantoms
+var priority_position:Vector2
 var direction = Vector2.ZERO
 
 func _ready():
+	load("res://assets/Enemy/Spawner.tscn")
+	phantom_quantity = get_tree().get_nodes_in_group("Enemies").size()
 	boat_position = get_parent().get_node("./Boat").position
 	boat_rotation = get_parent().get_node("./Boat").rotation
-	direction = Vector2(0, 1).rotated(boat_rotation)
+	if phantom_quantity > 0:
+		priority_position = get_closest_enemy()
+		direction = position.direction_to(priority_position)
 
-func get_closest_enemy():
-	var enemies = get_tree().get_nodes_in_group('Phantom')
-	if enemies.empty(): return null
-
-	var distances = []
-
-	for enemy in enemies:
-		var distance = get_parent().get_node("Boat").global_position.distance_squared_to(enemy.global_position)
-		distances.append(distance)
-
-	var min_distance = distances.min()
-	var min_index = distances.find(min_distance)
-	var closest_enemy = enemies[min_index]
-
-	return closest_enemy
+func get_closest_enemy() -> Vector2:
+	
+	phantom_quantity = get_tree().get_nodes_in_group("Enemies").size()
+	current_phantoms = get_tree().get_nodes_in_group("Enemies")
+	var closest_position:Vector2
+	
+	for enemy in phantom_quantity:
+		
+		var VectorCompare:Vector2
+		
+		if current_phantoms[enemy].position.distance_to(boat_position) < closest_position.distance_to(boat_position):
+			closest_position = current_phantoms[enemy].position
+	return closest_position
 	
 func _physics_process(delta: float) -> void: 
 	move_and_slide(direction * bullet_speed)

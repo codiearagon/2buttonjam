@@ -9,7 +9,7 @@ func _ready():
 	boat_position = get_node("../Boat/Center").global_position
 	direction = position.direction_to(boat_position)
 
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	move_and_slide(direction * bullet_speed)
 	
 	# Delete on hit

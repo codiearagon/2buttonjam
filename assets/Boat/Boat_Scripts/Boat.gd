@@ -74,10 +74,10 @@ func take_damage(amount: int):
 		SceneTransition.change_scene("res://assets/Scenes/Death.tscn")
 
 func _on_Attack_Rate_timeout() -> void:
-	var new_bullet = bullet.instance()
-	new_bullet.position = get_node("Center").global_position
-	#new_bullet.position.y -= 50
-	new_bullet.bullet_speed = bullet_speed
-	new_bullet.bullet_damage = bullet_damage
-	get_parent().add_child(new_bullet)
-	pass
+	if get_tree().get_nodes_in_group("Enemies").size() != 0:
+		var new_bullet = bullet.instance()
+		new_bullet.position = get_node("Center").global_position
+		new_bullet.bullet_speed = bullet_speed
+		new_bullet.bullet_damage = bullet_damage
+		get_parent().add_child(new_bullet)
+		pass
