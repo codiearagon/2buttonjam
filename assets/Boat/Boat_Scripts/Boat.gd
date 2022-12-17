@@ -1,5 +1,10 @@
 extends KinematicBody2D
 
+# Distance
+export(float, 100, 300) var max_distance = 100.0
+var current_phantoms
+var phantom_quantity
+
 # Health
 signal health_changed(value, max_value)
 
@@ -24,6 +29,22 @@ export var rotation_speed: float = 0.03
 var velocity = Vector2.ZERO
 var rotation_dir = 0
 var speed = 0
+
+func check_near_enemy() -> bool: 
+	phantom_quantity = get_tree().get_nodes_in_group("Enemies").size()
+	current_phantoms = get_tree().get_nodes_in_group("Enemies")
+	var closest_distance:Vector2
+	var float_distance:float
+	
+	for enemy in phantom_quantity:
+		if current_phantoms[enemy].position.distance_to($Center.position) < closest_distance.distance_to($Center.position):
+			float_distance = current_phantoms[enemy].position.distance_to($Center.position)
+	
+	return abs(float_distance) < max_distance
+
+func check_distance():
+	var is_near:bool
+	return is_near
 
 func _ready():
 	health = max_health
@@ -74,7 +95,8 @@ func take_damage(amount: int):
 		SceneTransition.change_scene("res://assets/Scenes/Death.tscn")
 
 func _on_Attack_Rate_timeout() -> void:
-	if get_tree().get_nodes_in_group("Enemies").size() != 0:
+	current_phantoms = get_tree().get_nodes_in_group("Enemies")
+	if current_phantoms.size() != 0 and check_near_enemy():
 		var new_bullet = bullet.instance()
 		new_bullet.position = get_node("Center").global_position
 		new_bullet.bullet_speed = bullet_speed

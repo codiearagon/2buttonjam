@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/Enemy/Phantom/Phantom.gd" type="Script" id=1]
 [ext_resource path="res://assets/Enemy/Phantom/UI.gd" type="Script" id=3]
@@ -6,6 +6,9 @@
 [ext_resource path="res://assets/Styles/HealthBG.tres" type="StyleBox" id=5]
 [ext_resource path="res://assets/Styles/HealthFG.tres" type="StyleBox" id=6]
 [ext_resource path="res://assets/Enemy/Phantom/Minion.png" type="Texture" id=7]
+
+[sub_resource type="CanvasItemMaterial" id=9]
+blend_mode = 1
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 7 )
@@ -41,7 +44,7 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 31.0
-height = 62.0
+height = 22.0
 
 [node name="Phantom" type="KinematicBody2D"]
 position = Vector2( 114, 198 )
@@ -56,14 +59,15 @@ bullet_speed = 100.0
 attack_rate = 2.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 9 )
 position = Vector2( 1, -64 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 8 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -64 )
+position = Vector2( 1, -67 )
 shape = SubResource( 1 )
 
 [node name="Attack_Rate" type="Timer" parent="."]
