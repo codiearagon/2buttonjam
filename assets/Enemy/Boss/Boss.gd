@@ -54,6 +54,7 @@ func first_phase_change():
 		get_node("../Boat/Attack_Rate").stop()
 		$Attack_Rate.stop()
 		$Phase_Changed.play("Change")
+		clear_all_bullets()
 		$First_Cannon/RevealTween.interpolate_method($First_Cannon, "set_modulate", $First_Cannon.modulate, Color8(255, 255, 255), 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$First_Cannon/RevealTween.start()
 		yield($Phase_Changed, "animation_finished")
@@ -79,6 +80,7 @@ func second_phase_change():
 		get_node("../Boat/Attack_Rate").stop()
 		$Attack_Rate.stop()
 		$Phase_Changed.play("Change")
+		clear_all_bullets()
 		$Second_Cannon/RevealTween.interpolate_method($Second_Cannon, "set_modulate", $Second_Cannon.modulate, Color8(255, 255, 255), 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Second_Cannon/RevealTween.start()
 		yield($Phase_Changed, "animation_finished")
@@ -140,3 +142,9 @@ func spawn_cannon_bullet(cannon):
 	new_bullet.bullet_speed = bullet_speed
 	new_bullet.bullet_damage = bullet_damage
 	get_parent().add_child(new_bullet)
+
+func clear_all_bullets():
+	var enemy_bullets = get_tree().get_nodes_in_group("Enemy_Bullets")
+	
+	for bullet in enemy_bullets:
+		bullet.queue_free()
