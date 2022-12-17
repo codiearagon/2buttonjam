@@ -25,7 +25,7 @@ animations = [ {
 radius = 25.0
 height = 14.0
 
-[node name="Boss" type="KinematicBody2D"]
+[node name="Boss" type="KinematicBody2D" groups=["Enemies"]]
 scale = Vector2( 4, 4 )
 collision_layer = 4
 script = ExtResource( 2 )
