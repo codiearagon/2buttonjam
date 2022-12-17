@@ -27,7 +27,7 @@ extra_spacing_top = 1
 font_data = ExtResource( 10 )
 
 [sub_resource type="Animation" id=3]
-resource_name = "First_phase"
+resource_name = "Change"
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("CutsceneCamera:current")
@@ -181,7 +181,7 @@ position = Vector2( 707, 294 )
 
 [node name="Phase_Changed" type="AnimationPlayer" parent="Boss"]
 root_node = NodePath("../..")
-anims/First_phase = SubResource( 3 )
+anims/Change = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 
 [node name="CutsceneCamera" type="Camera2D" parent="."]

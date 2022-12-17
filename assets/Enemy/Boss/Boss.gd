@@ -2,11 +2,14 @@ extends "../EnemyBase.gd"
 
 onready var boat = get_node("../Boat")
 
-var bullet = preload("res://assets/Enemy/Boss/BossBullet.tscn")
+var boss_bullet = preload("res://assets/Enemy/Boss/BossBullet.tscn")
+var cannon_bullet = preload("res://assets/Enemy/Boss/CannonBullet.tscn")
 
 var at_first_phase: bool = false
 var at_second_phase: bool = false
 var at_third_phase: bool = false
+
+var phase = 0
 
 func _ready():
 	max_health = 100
@@ -50,9 +53,10 @@ func first_phase_change():
 		movement_speed = 0
 		get_node("../Boat/Attack_Rate").stop()
 		$Attack_Rate.stop()
-		$Phase_Changed.play("First_phase")
+		$Phase_Changed.play("Change")
 		yield($Phase_Changed, "animation_finished")
 		at_first_phase = true
+		phase = 1
 		$Attack_Rate.start()
 		get_node("../Boat/Attack_Rate").start()
 		$First_Cannon.visible = true
@@ -69,21 +73,28 @@ func first_phase_change():
 		move_and_slide(direction * movement_speed)
 
 func second_phase_change():
-	if !at_first_phase:
+	if !at_second_phase:
 		movement_speed = 0
 		get_node("../Boat/Attack_Rate").stop()
 		$Attack_Rate.stop()
-		$Phase_Changed.play("Second_phase")
+		$Phase_Changed.play("Change")
 		yield($Phase_Changed, "animation_finished")
 		at_second_phase = true
+		phase = 2
 		$Attack_Rate.start()
 		get_node("../Boat/Attack_Rate").start()
+		$Second_Cannon.visible = true
 
 	else:
 		movement_speed = 100
 		bullet_damage = 10
 		bullet_speed = 250
 		attack_rate = 1
+		
+		var boat_position = boat.global_position
+		var direction = position.direction_to(boat_position)
+	
+		move_and_slide(direction * movement_speed)
 
 func third_phase_change():
 	pass
@@ -100,10 +111,30 @@ func death():
 	queue_free()
 
 func _on_Attack_Rate_timeout() -> void:
-	var new_bullet = bullet.instance()
+	if phase == 1:
+		spawn_boss_bullet()
+		spawn_cannon_bullet($First_Cannon/Muzzle)
+	elif phase == 2:
+		spawn_boss_bullet()
+		spawn_cannon_bullet($First_Cannon/Muzzle)
+		spawn_cannon_bullet($Second_Cannon/Muzzle)
+	
+	else:
+		spawn_boss_bullet()
+	
+func spawn_boss_bullet():
+	var new_bullet = boss_bullet.instance()
 	new_bullet.add_to_group("Enemy_Bullets")
 	new_bullet.position = position
 	new_bullet.position.y -= 50
+	new_bullet.bullet_speed = bullet_speed
+	new_bullet.bullet_damage = bullet_damage
+	get_parent().add_child(new_bullet)
+	
+func spawn_cannon_bullet(cannon):
+	var new_bullet = cannon_bullet.instance()
+	new_bullet.add_to_group("Enemy_Bullets")
+	new_bullet.position = cannon.global_position
 	new_bullet.bullet_speed = bullet_speed
 	new_bullet.bullet_damage = bullet_damage
 	get_parent().add_child(new_bullet)
